@@ -1,10 +1,10 @@
-const max = 100;
+const max = 10;
 // When user enter the choice
 
 
 // Computer choice 
 function getComputerChoice () {
-    const num = Math.floor(Math.random () * 100);
+    const num = Math.floor(Math.random () * 10);
     console.log(num);
     if (num < (Math.floor(max / 3))) {
         return "ROCK";
@@ -16,33 +16,55 @@ function getComputerChoice () {
 }
 
 // Check who is win
-function playRound(playerSelection, computerSelection) {
+function playRound(playerSelection, computerSelection, playerWinCounter) {
     if (playerSelection === "ROCK" && computerSelection === "PAPER") {
-    return ("You Lose! Paper cover Rock");
+        console.log("You Lose! Paper cover Rock");
+        playerWinCounter--;
+        return playerWinCounter;
     } else if (playerSelection === "PAPER" && computerSelection === "SCISSORS") {
-        return ("You Lose! Scissors cuts Paper");
+        console.log("You Lose! Scissors cuts Paper");
+        playerWinCounter--;
+        return playerWinCounter;
     } else if (playerSelection === "SCISSORS" && computerSelection === "ROCK") {
-        return ("You Lose! Rock break Scissors");
+        console.log("You Lose! Rock break Scissors");
+        playerWinCounter--;
+        return playerWinCounter;
     } else if (playerSelection === "ROCK" && computerSelection === "SCISSORS") {
-        return ("You Win! Rock break Scissors");
+        console.log("You Win! Rock break Scissors");
+        playerWinCounter++;
+        return playerWinCounter;
     } else if (playerSelection === "PAPER" && computerSelection === "ROCK") {
-        return ("You Win! Paper covers Rock");
+        console.log("You Win! Paper covers Rock");
+        playerWinCounter++;
+        return playerWinCounter;
     } else if (playerSelection === "SCISSORS" && computerSelection === "PAPER") {
-        return ("You Win! Scissors cuts Paper");
+        console.log("You Win! Scissors cuts Paper");
+        playerWinCounter++;
+        return playerWinCounter;
     } else {
-        return ("Tie! No one Win")
+        console.log("Tie! No one Win")
+        return playerWinCounter;
     }
-} 
+}
 
 // Game function call playRound function 5 times to play 5 round
 function game () {
+    let playerWinCounter = 0;
     for (let i = 0; i < 5; i++) {
         const playerSelection = prompt("What do you choose? ").toUpperCase();
         const computerSelection = getComputerChoice();
 
-        console.log(playRound(playerSelection, computerSelection));
+        playRound(playerSelection, computerSelection, playerWinCounter);
         console.log(playerSelection);
         console.log(computerSelection);
+    }
+    if (playerWinCounter > 0) {
+        console.log("You win the Game!");
+    } else if (playerWinCounter < 0) {
+        console.log("You loss the Game!");
+    }
+    else {
+        console.log("Its a tie!");
     }
 }
 
