@@ -1,7 +1,7 @@
 const max = 100;
 // When user enter the choice
-const playerSelection = prompt("What do you choose? ").toUpperCase();
-const computerSelection = getComputerChoice();
+
+
 // Computer choice 
 function getComputerChoice () {
     const num = Math.floor(Math.random () * 100);
@@ -33,6 +33,17 @@ function playRound(playerSelection, computerSelection) {
         return ("Tie! No one Win")
     }
 } 
-console.log(playRound(playerSelection, computerSelection));
-console.log(playerSelection);
-console.log(computerSelection);
+
+// Game function call playRound function 5 times to play 5 round
+function game () {
+    for (let i = 0; i < 5; i++) {
+        const playerSelection = prompt("What do you choose? ").toUpperCase();
+        const computerSelection = getComputerChoice();
+
+        console.log(playRound(playerSelection, computerSelection));
+        console.log(playerSelection);
+        console.log(computerSelection);
+    }
+}
+
+game ();
