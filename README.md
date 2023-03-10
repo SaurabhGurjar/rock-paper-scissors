@@ -1,5 +1,6 @@
 # rock-paper-scissors
-## Play Rock Paper Scissors game against the computer
+
+## Play Rock Paper Scissors game against the computer.
 
  ## What I learned 
  + How make functions in JavaScript
