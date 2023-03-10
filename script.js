@@ -3,13 +3,13 @@ const max = 10;
 
 
 // Computer choice 
-function getComputerChoice () {
-    const num = Math.floor(Math.random () * 10);
+function getComputerChoice() {
+    const num = Math.floor(Math.random() * 10);
     if (num < (Math.floor(max / 3))) {
         return "ROCK";
     } else if (num > (Math.floor(max / 3)) && num < (Math.floor(max / 3) + Math.floor(max / 3))) {
         return "PAPER";
-    }  else {
+    } else {
         return "SCISSORS";
     }
 }
@@ -47,22 +47,30 @@ function playRound(playerSelection, computerSelection, playerWinCounter) {
 }
 
 // Game function call playRound function 5 times to play 5 round
-function game () {
-    let playerWinCounter = 0;
+function game() {
+    let playerWinCounter = null;
+    let i;
     for (let i = 0; i < 5; i++) {
         const playerSelection = prompt("What do you choose? ").toUpperCase();
-
+        if (!(playerSelection === "ROCK" || playerSelection === "PAPER" || playerSelection === "SCISSORS")) {
+            alert('Chocies are "Rock", "Paper", "Scissor"');
+            break;
+        }
         const computerSelection = getComputerChoice();
         playerWinCounter = playRound(playerSelection, computerSelection, playerWinCounter);
     }
-    if (playerWinCounter > 0) {
-        console.log("You win the Game!");
-    } else if (playerWinCounter < 0) {
-        console.log("You loss the Game!");
-    }
-    else {
-        console.log("Its a tie!");
+    if (i === 4) {
+        if (playerWinCounter > 0) {
+            console.log("You win the Game!");
+        } else if (playerWinCounter < 0) {
+            console.log("You loss the Game!");
+        }
+        else if (playerWinCounter === 0) {
+            console.log("Its a tie!");
+        }
+    } else {
+        console.log("Refresh the page to Play again!")
     }
 }
 
-game ();
+game();
