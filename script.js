@@ -5,7 +5,6 @@ const max = 10;
 // Computer choice 
 function getComputerChoice () {
     const num = Math.floor(Math.random () * 10);
-    console.log(num);
     if (num < (Math.floor(max / 3))) {
         return "ROCK";
     } else if (num > (Math.floor(max / 3)) && num < (Math.floor(max / 3) + Math.floor(max / 3))) {
@@ -52,11 +51,9 @@ function game () {
     let playerWinCounter = 0;
     for (let i = 0; i < 5; i++) {
         const playerSelection = prompt("What do you choose? ").toUpperCase();
-        const computerSelection = getComputerChoice();
 
-        playRound(playerSelection, computerSelection, playerWinCounter);
-        console.log(playerSelection);
-        console.log(computerSelection);
+        const computerSelection = getComputerChoice();
+        playerWinCounter = playRound(playerSelection, computerSelection, playerWinCounter);
     }
     if (playerWinCounter > 0) {
         console.log("You win the Game!");
