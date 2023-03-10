@@ -14,7 +14,7 @@ function getComputerChoice() {
     }
 }
 
-// Check who is win
+// Check who wins 
 function playRound(playerSelection, computerSelection, playerWinCounter) {
     if (playerSelection === "ROCK" && computerSelection === "PAPER") {
         console.log("You Lose! Paper beats Rock");
