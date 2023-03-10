@@ -1,5 +1,6 @@
 # rock-paper-scissors
-## Rock Paper Scissors game in which you will play against computer 
+## Play Rock Paper Scissors game against the computer
+
  ## What I learned 
  + How make functions in JavaScript
  + How to use Conditionals 
