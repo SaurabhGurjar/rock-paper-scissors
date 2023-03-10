@@ -17,27 +17,27 @@ function getComputerChoice() {
 // Check who is win
 function playRound(playerSelection, computerSelection, playerWinCounter) {
     if (playerSelection === "ROCK" && computerSelection === "PAPER") {
-        console.log("You Lose! Paper cover Rock");
+        console.log("You Lose! Paper beats Rock");
         playerWinCounter--;
         return playerWinCounter;
     } else if (playerSelection === "PAPER" && computerSelection === "SCISSORS") {
-        console.log("You Lose! Scissors cuts Paper");
+        console.log("You Lose! Scissors beats Paper");
         playerWinCounter--;
         return playerWinCounter;
     } else if (playerSelection === "SCISSORS" && computerSelection === "ROCK") {
-        console.log("You Lose! Rock break Scissors");
+        console.log("You Lose! Rock beats Scissors");
         playerWinCounter--;
         return playerWinCounter;
     } else if (playerSelection === "ROCK" && computerSelection === "SCISSORS") {
-        console.log("You Win! Rock break Scissors");
+        console.log("You Win! Rock beats Scissors");
         playerWinCounter++;
         return playerWinCounter;
     } else if (playerSelection === "PAPER" && computerSelection === "ROCK") {
-        console.log("You Win! Paper covers Rock");
+        console.log("You Win! Paper beats Rock");
         playerWinCounter++;
         return playerWinCounter;
     } else if (playerSelection === "SCISSORS" && computerSelection === "PAPER") {
-        console.log("You Win! Scissors cuts Paper");
+        console.log("You Win! Scissors beats Paper");
         playerWinCounter++;
         return playerWinCounter;
     } else {
