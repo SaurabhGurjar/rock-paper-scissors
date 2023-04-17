@@ -1,6 +1,18 @@
 const max = 10;
-// When user enter the choice
+let counter = 0;
+let computerScoreCounter = 0;
+let playerScoreCounter = 0;
 
+// When user enter the choice
+const text = document.querySelector('.text');
+const rock = document.querySelector('#rock');
+const paper = document.querySelector('#paper');
+const scissors = document.querySelector('#scissors');
+const imgLeft = document.querySelector('#left-img');
+const imgRight = document.querySelector('#right-img');
+const playerScore = document.querySelector('.player-score');
+const computerScore = document.querySelector('.computer-score');
+const winner = document.querySelector('.winner');
 
 // Computer choice 
 function getComputerChoice() {
@@ -15,62 +27,103 @@ function getComputerChoice() {
 }
 
 // Check who wins 
-function playRound(playerSelection, computerSelection, playerWinCounter) {
-    if (playerSelection === "ROCK" && computerSelection === "PAPER") {
-        console.log("You Lose! Paper beats Rock");
-        playerWinCounter--;
-        return playerWinCounter;
-    } else if (playerSelection === "PAPER" && computerSelection === "SCISSORS") {
-        console.log("You Lose! Scissors beats Paper");
-        playerWinCounter--;
-        return playerWinCounter;
-    } else if (playerSelection === "SCISSORS" && computerSelection === "ROCK") {
-        console.log("You Lose! Rock beats Scissors");
-        playerWinCounter--;
-        return playerWinCounter;
-    } else if (playerSelection === "ROCK" && computerSelection === "SCISSORS") {
-        console.log("You Win! Rock beats Scissors");
-        playerWinCounter++;
-        return playerWinCounter;
-    } else if (playerSelection === "PAPER" && computerSelection === "ROCK") {
-        console.log("You Win! Paper beats Rock");
-        playerWinCounter++;
-        return playerWinCounter;
-    } else if (playerSelection === "SCISSORS" && computerSelection === "PAPER") {
-        console.log("You Win! Scissors beats Paper");
-        playerWinCounter++;
-        return playerWinCounter;
+function playRound(playerSelection, computerSelection) {
+
+    if ((playerSelection === "ROCK" && computerSelection === "PAPER") || (playerSelection === "PAPER" && computerSelection === "SCISSORS") || (playerSelection === "SCISSORS" && computerSelection === "ROCK")) {
+        text.textContent = "You Lose! Paper beats Rock";
+        computerScoreCounter = computerScoreCounter + 1;
+        return;
+    } else if ((playerSelection === "ROCK" && computerSelection === "SCISSORS") || (playerSelection === "PAPER" && computerSelection === "ROCK") || (playerSelection === "SCISSORS" && computerSelection === "PAPER")) {
+        text.textContent = "You Win! Rock beats Scissors";
+        playerScoreCounter++;
+        return;
     } else {
-        console.log("Tie! No one Win")
-        return playerWinCounter;
+        text.textContent = "Tie! No one Win";
+        return;
     }
+
 }
 
 // Game function call playRound function 5 times to play 5 round
-function game() {
-    let playerWinCounter = null;
-    let i;
-    for (let i = 0; i < 5; i++) {
-        const playerSelection = prompt("What do you choose? ").toUpperCase();
-        if (!(playerSelection === "ROCK" || playerSelection === "PAPER" || playerSelection === "SCISSORS")) {
-            alert('Chocies are "Rock", "Paper", "Scissor"');
-            break;
-        }
-        const computerSelection = getComputerChoice();
-        playerWinCounter = playRound(playerSelection, computerSelection, playerWinCounter);
+function game(playerSelection, counter) {
+
+
+    const computerSelection = getComputerChoice();
+    // console.log(computerSelection);
+    // console.log(playerSelection);
+    displayChoice(playerSelection, computerSelection);
+
+    playRound(playerSelection, computerSelection);
+
+    console.log({ computerScoreCounter, playerScoreCounter });
+    updateScore();
+
+    if (playerScoreCounter >= 6) {
+        winner.textContent = "You win the Game!";
+        playerScoreCounter = 0;
+        computerScoreCounter = 0;
+    } else if (computerScoreCounter >= 5) {
+        winner.textContent = "You loss the Game!";
+        playerScoreCounter = 0;
+        computerScoreCounter = 0;
     }
-    if (i === 4) {
-        if (playerWinCounter > 0) {
-            console.log("You win the Game!");
-        } else if (playerWinCounter < 0) {
-            console.log("You loss the Game!");
-        }
-        else if (playerWinCounter === 0) {
-            console.log("Its a tie!");
-        }
-    } else {
-        console.log("Refresh the page to Play again!")
+    else if ((playerScoreCounter === computerScoreCounter) && (playerSelection === 5 || computerScoreCounter === 5)) {
+        winner.textContent = "Its a tie!";
+        
     }
 }
 
-// game();
+function updateScore () {
+    playerScore.textContent = playerScoreCounter;
+}
+
+
+function getPlayerChoice() {
+
+    // Get click event from buttons
+
+    rock.addEventListener('click', () => {
+        game('ROCK');
+        counter++;
+    });
+
+    paper.addEventListener('click', () => {
+        game('PAPER');
+        counter++;
+    });
+
+    scissors.addEventListener('click', () => {
+        game('SCISSORS');
+        counter++;
+    });
+
+
+
+}
+
+function displayChoice(playerChoice, computerChoice) {
+
+    console.log({ playerChoice, computerChoice });
+
+    // display user's choice
+    if (playerChoice === 'ROCK') {
+        imgLeft.src = `media/${playerChoice}.png`;
+
+    } else if (playerChoice === 'PAPER') {
+        imgLeft.src = `media/${playerChoice}.png`;
+    } else {
+        imgLeft.src = `media/${playerChoice}.png`;
+    }
+
+    // Display computer's choice
+    if (computerChoice === 'Rock') {
+        imgRight.src = `media/${computerChoice}.png`;
+    } else if (computerChoice === 'PAPER') {
+        imgRight.src = `media/${computerChoice}.png`;
+    } else {
+        imgRight.src = `media/${computerChoice}.png`;
+    }
+}
+
+
+getPlayerChoice();

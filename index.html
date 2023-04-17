@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+ 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,25 +9,67 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
+
 <body>
-    <div class="contianer">
-        <h1 style="text-align: center;">Rock Paper Scissors</h1>
-        <div class="content">
-            <div class="result">
-                <div class="choice">
-                    <div class="rock">
-                        ✊
-                    </div>
-                    <div class="paper">
-                        ✋
-                    </div>
-                    <div class="scissors">
-                        
-                    </div>
-                </div>
-            </div>
+
+    <div class="header">
+        <div class="heading">
+            <h1>Rock Paper Scissors</h1>
         </div>
     </div>
-    
+
+    <div class="result">
+        <h2 class="text">play</h2>
+        <p class="winner">Result will display here!</p>
+        <div class="display-choice">
+
+            <div class="left choosed">
+                <img src="media/Human.png" id="left-img" class="selected">
+                
+            </div>
+            <div class="score-container">
+                <p class="player-score score">0</p>
+            </div>
+
+            <div class="score-container">
+                <p class="computer-score score">0</p>
+            </div>
+            <div class="right choosed">
+                <img src="media/AI.png" id="right-img" class="selected">
+            </div>
+
+        </div>
+    </div>
+
+    </div>
+
+    <div class="choice">
+        <div class="choice-text">
+            <h2>Choose your weapon!</h2>
+        </div>
+        <div class="choice-container">
+            <div class="wrapper">
+                <button id="rock">
+                    <img src="./media/ROCK.png" alt="rock">
+                </button>
+                <h4>ROCK</h4>
+            </div>
+            <div class="wrapper">
+                <button id="paper">
+                    <img src="./media/PAPER.png" alt="paper">
+                </button>
+                <h4>PAPER</h4>
+            </div>
+            <div class="wrapper">
+                <button id="scissors">
+                    <img src="./media/SCISSORS.png" alt="scissors">
+                </button>
+                <h4>SCISSORS</h4>
+            </div>
+        </div>
+
+    </div>
+
 </body>
+
 </html>
