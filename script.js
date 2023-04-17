@@ -12,6 +12,8 @@ const imgLeft = document.querySelector('#left-img');
 const imgRight = document.querySelector('#right-img');
 const playerScore = document.querySelector('.player-score');
 const computerScore = document.querySelector('.computer-score');
+const playerChoiceContainer = document.querySelector('.left');
+const computerChoiceContainer = document.querySelector('.right');
 const winner = document.querySelector('.winner');
 
 // Computer choice 
@@ -30,15 +32,25 @@ function getComputerChoice() {
 function playRound(playerSelection, computerSelection) {
 
     if ((playerSelection === "ROCK" && computerSelection === "PAPER") || (playerSelection === "PAPER" && computerSelection === "SCISSORS") || (playerSelection === "SCISSORS" && computerSelection === "ROCK")) {
-        text.textContent = "You Lose! Paper beats Rock";
+        text.textContent = "Paper beats Rock";
+        winner.textContent = "Human lose!";
+        computerChoiceContainer.classList.remove('active-lose');
+        computerChoiceContainer.classList.add('active-win');
+        playerChoiceContainer.classList.add('active.lose');
         computerScoreCounter = computerScoreCounter + 1;
         return;
     } else if ((playerSelection === "ROCK" && computerSelection === "SCISSORS") || (playerSelection === "PAPER" && computerSelection === "ROCK") || (playerSelection === "SCISSORS" && computerSelection === "PAPER")) {
-        text.textContent = "You Win! Rock beats Scissors";
+        text.textContent = "Rock beats Scissors";
+        winner.textContent = "Human win";
+        playerChoiceContainer.classList.remove('active-lose');
+        playerChoiceContainer.classList.add('active-win');
+        computerChoiceContainer.classList.add('active-lose');
+
         playerScoreCounter++;
         return;
     } else {
-        text.textContent = "Tie! No one Win";
+        text.textContent = "No one Win";
+        winner.textContent = "Its a Tie!";
         return;
     }
 
@@ -55,15 +67,14 @@ function game(playerSelection, counter) {
 
     playRound(playerSelection, computerSelection);
 
-    console.log({ computerScoreCounter, playerScoreCounter });
     updateScore();
 
-    if (playerScoreCounter >= 6) {
-        winner.textContent = "You win the Game!";
+    if (playerScoreCounter === 5) {
+        winner.textContent = "Human win the Game!";
         playerScoreCounter = 0;
         computerScoreCounter = 0;
-    } else if (computerScoreCounter >= 5) {
-        winner.textContent = "You loss the Game!";
+    } else if (computerScoreCounter === 5) {
+        winner.textContent = "Human loss the Game!";
         playerScoreCounter = 0;
         computerScoreCounter = 0;
     }
@@ -75,6 +86,7 @@ function game(playerSelection, counter) {
 
 function updateScore () {
     playerScore.textContent = playerScoreCounter;
+    computerScore.textContent = computerScoreCounter;
 }
 
 
