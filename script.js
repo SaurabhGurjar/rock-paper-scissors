@@ -36,7 +36,7 @@ function playRound(playerSelection, computerSelection) {
         winner.textContent = "Human lose!";
         computerChoiceContainer.classList.remove('active-lose');
         computerChoiceContainer.classList.add('active-win');
-        playerChoiceContainer.classList.add('active.lose');
+        playerChoiceContainer.classList.add('active-lose');
         computerScoreCounter = computerScoreCounter + 1;
         return;
     } else if ((playerSelection === "ROCK" && computerSelection === "SCISSORS") || (playerSelection === "PAPER" && computerSelection === "ROCK") || (playerSelection === "SCISSORS" && computerSelection === "PAPER")) {
@@ -73,10 +73,18 @@ function game(playerSelection, counter) {
         winner.textContent = "Human win the Game!";
         playerScoreCounter = 0;
         computerScoreCounter = 0;
+        computerChoiceContainer.classList.remove('active-lose');
+        playerChoiceContainer.classList.remove('active-lose');
+        computerChoiceContainer.classList.remove('active-win');
+        playerChoiceContainer.classList.remove('active-win');
     } else if (computerScoreCounter === 5) {
         winner.textContent = "Human loss the Game!";
         playerScoreCounter = 0;
         computerScoreCounter = 0;
+        computerChoiceContainer.classList.remove('active-lose');
+        playerChoiceContainer.classList.remove('active-lose');
+        computerChoiceContainer.classList.remove('active-win');
+        playerChoiceContainer.classList.remove('active-win');
     }
     else if ((playerScoreCounter === computerScoreCounter) && (playerSelection === 5 || computerScoreCounter === 5)) {
         winner.textContent = "Its a tie!";
