@@ -20,34 +20,55 @@
 
     <div class="main">
         <div class="result">
-            <h2 class="text">play</h2>
-            <p class="winner">Result will display here!</p>
+            <div class="result-text-wrapper">
+                <h2 class="result-text">Start!!!</h2>
+                <p class="winner">Result will display here!</p>
+            </div>
 
             <div class="display-choice">
-
-                <div class="left choosed">
-                    <img src="media/Human.png" id="left-img" class="selected">
-                </div>
-
-                <div class="display-score">
-                    <h3>Human</h3>
-                    <div class="score-container">
-                        <p class="player-score score">0</p>
+                <div class="selected">
+                    <div class="left choosed">
+                        <img src="media/Human.png" id="left-img" class="selected">
+                    </div>
+                    <div class="wins">
+                        <div class="pr-1"></div>
+                        <div class="pr-2"></div>
+                        <div class="pr-3"></div>
                     </div>
                 </div>
 
-                <div class="display-score">
-                    <h3>AI</h3>
-                    <div class="score-container">
-                        <p class="computer-score score">0</p>
+                <div class="game-numbers">
+                    <div class="round-number">
+                        <h3 class="round">Round 1</h3>
+                    </div>
+
+                    <div class="score-wrapper">
+                        <div class="display-score">
+                            <h3>You</h3>
+                            <div class="score-container">
+                                <p class="player-score score">0</p>
+                            </div>
+                        </div>
+
+                        <div class="display-score">
+                            <h3>AI</h3>
+                            <div class="score-container">
+                                <p class="computer-score score">0</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="right choosed">
-                    <img src="media/Ai.png" id="right-img" class="selected">
-
+                <div class="selected">
+                    <div class="right choosed">
+                        <img src="media/Ai.png" id="right-img" class="selected">
+                    </div>
+                    <div class="computer-wins wins">
+                        <div class="cr-1"></div>
+                        <div class="cr-2"></div>
+                        <div class="cr-3"></div>
+                    </div>
                 </div>
-
             </div>
         </div>
 
@@ -80,9 +101,17 @@
 
     </div>
     </div>
+
+    <!-- Popup -->
+    <div class="popup">
+        <h1 class="popup-heading"></h1>
+        <p class="popup-info"></p>
+        <button class="reset">Replay</button>
+    </div>
+
     <div class="footer">
         <div class="divider"></div>
-        <p>Created by Saurabh Choudhary</p>
+        <p class="footer-text">Created by Saurabh Choudhary</p>
     </div>
 
 </body>
