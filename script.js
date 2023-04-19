@@ -28,6 +28,7 @@ const winnerImg = document.querySelector('.popup-img');
 const resetButton = document.querySelector('.reset');
 const popup = document.getElementById('popup');
 const overlay = document.getElementById('overlay');
+const popupWinnerText = document.querySelector('.popup-info');
 
 // Computer choice 
 function getComputerChoice() {
@@ -158,8 +159,10 @@ function displayPopup () {
 
     if (winner > 0) {
         winnerImg.src = 'media/Human.png';
+        popupWinnerText.textContent = 'You win the Game Human';
     } else if (winner < 0) {
         winnerImg.src = 'media/Ai.png';
+        popupWinnerText.textContent = 'AI win the Game';
     }
 
     popup.classList.add('active');
