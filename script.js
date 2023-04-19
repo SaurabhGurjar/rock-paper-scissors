@@ -3,11 +3,12 @@ let roundCounter = 0;
 let playerWinCounter = null;
 let playerScoreCounter = 0;
 let computerScoreCounter = 0;
+let winner = 0;
 
 // When user enter the choice
 const rock = document.querySelector('#rock');
 const paper = document.querySelector('#paper');
-const winner = document.querySelector('.winner');
+const displayWinner = document.querySelector('.winner');
 const imgLeft = document.querySelector('#left-img');
 const imgRight = document.querySelector('#right-img');
 const scissors = document.querySelector('#scissors');
@@ -23,7 +24,8 @@ const computerRoundTwo = document.querySelector('.cr-2');
 const computerRoundThree = document.querySelector('.cr-3');
 const playerChoiceContainer = document.querySelector('.left');
 const computerChoiceContainer = document.querySelector('.right');
-
+const winnerImg = document.querySelector('.popup-img');
+const resetButton = document.querySelector('.reset');
 
 // Computer choice 
 function getComputerChoice() {
@@ -42,7 +44,7 @@ function playRound(playerSelection, computerSelection) {
 
     if ((playerSelection === "ROCK" && computerSelection === "PAPER") || (playerSelection === "PAPER" && computerSelection === "SCISSORS") || (playerSelection === "SCISSORS" && computerSelection === "ROCK")) {
         resultText.textContent = "Paper beats Rock";
-        winner.textContent = "AI win!";
+        displayWinner.textContent = "AI win!";
         computerChoiceContainer.classList.remove('active-lose');
         computerChoiceContainer.classList.add('active-win');
         playerChoiceContainer.classList.add('active-lose');
@@ -50,7 +52,7 @@ function playRound(playerSelection, computerSelection) {
         return;
     } else if ((playerSelection === "ROCK" && computerSelection === "SCISSORS") || (playerSelection === "PAPER" && computerSelection === "ROCK") || (playerSelection === "SCISSORS" && computerSelection === "PAPER")) {
         resultText.textContent = "Rock beats Scissors";
-        winner.textContent = "Human win";
+        displayWinner.textContent = "Human win";
         playerChoiceContainer.classList.remove('active-lose');
         playerChoiceContainer.classList.add('active-win');
         computerChoiceContainer.classList.add('active-lose');
@@ -58,7 +60,7 @@ function playRound(playerSelection, computerSelection) {
         return;
     } else {
         resultText.textContent = "No one Win";
-        winner.textContent = "Its a Tie!";
+        displayWinner.textContent = "Its a Tie!";
         return;
     }
 
@@ -76,9 +78,20 @@ function game(playerSelection, counter) {
     playRound(playerSelection, computerSelection);
 
     updateScore();
+    getGameWinner();
+    gameOver();
+    
+}
+
+function updateScore() {
+    playerScore.textContent = playerScoreCounter;
+    computerScore.textContent = computerScoreCounter;
+}
+
+function getGameWinner () {
 
     if (playerScoreCounter === 5) {
-        winner.textContent = "Human wins this Round!";
+        displayWinner.textContent = "Human wins this Round!";
         playerScoreCounter = 0;
         computerScoreCounter = 0;
         computerChoiceContainer.classList.remove('active-lose');
@@ -89,17 +102,19 @@ function game(playerSelection, counter) {
         if (roundCounter === 1) {
             playerRoundOne.classList.add('rounds-win');
             computerRoundOne.classList.add('rounds-lose');
+            winner++;
         } else if (roundCounter === 2) {
             playerRoundTwo.classList.add('rounds-win');
             computerRoundTwo.classList.add('rounds-lose');
+            winner++;
         } else if (roundCounter === 3) {
             playerRoundThree.classList.add('rounds-win');
             computerRoundThree.classList.add('rounds-lose');
-            
+            winner++;
         }
     }
     else if (computerScoreCounter === 5) {
-        winner.textContent = "AI wins this Round!";
+        displayWinner.textContent = "AI wins this Round!";
         playerScoreCounter = 0;
         computerScoreCounter = 0;
         computerChoiceContainer.classList.remove('active-lose');
@@ -111,35 +126,44 @@ function game(playerSelection, counter) {
         if (roundCounter === 1) {
             playerRoundOne.classList.add('rounds-lose');
             computerRoundOne.classList.add('rounds-win');
+            winner--;
         } else if (roundCounter === 2) {
             playerRoundTwo.classList.add('rounds-lose');
             computerRoundTwo.classList.add('rounds-win');
+            winner--;
         } else if (roundCounter === 3) {
             playerRoundThree.classList.add('rounds-lose');
             computerRoundThree.classList.add('rounds-win');
+            winner--;
         
         }
     }
-    else if ((playerScoreCounter === computerScoreCounter) && (playerSelection === 5 || computerScoreCounter === 5)) {
-        winner.textContent = "Its a tie!";
+    else if ((playerScoreCounter === computerScoreCounter) && (playerScoreCounter === 5 || computerScoreCounter === 5)) {
+        displayWinner.textContent = "Its a tie!";
 
     }
+}
 
+function gameOver () {
     if (roundCounter < 3) {
         roundNumber.textContent = `Round ${roundCounter + 1}`;
     } else {
         roundNumber.textContent = `Round ${roundCounter}`;
-        reset();
+        displayPopup();
+    }
+}
+
+function displayPopup () {
+
+    if (winner > 0) {
+        winnerImg.src = 'media/Human.png';
+    } else if (winner < 0) {
+        winnerImg.src = 'media/Ai.png';
     }
 
-    
+    document.getElementById('popup').style.display = 'flex';
+    reset ();
 }
-
-function updateScore() {
-    playerScore.textContent = playerScoreCounter;
-    computerScore.textContent = computerScoreCounter;
-}
-
 
 function getPlayerChoice() {
 

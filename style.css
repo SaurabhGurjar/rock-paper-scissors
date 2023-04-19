@@ -6,6 +6,7 @@ html {
 body {
     margin: 0;
     padding: 0;
+    background: #282A3A;
 }
 
 .container {
@@ -36,7 +37,6 @@ h1 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: #282A3A;
     padding: 10px;
 }
 
@@ -165,7 +165,6 @@ button {
 
 button:hover {
     background-color: #404258;
-    color: #EEEEEE;
     box-shadow: 0 12px 16px 0 rgba(255, 254, 254, 0.24), 0 17px 50px 0 rgba(255, 255, 255, 0.19);
 }
 
@@ -239,7 +238,40 @@ h4 {
 
 /* popup */
 .popup {
-    display: none;
+    display: flex;
+    flex-direction: column;
     position: fixed;
-    border: 3px solid #f1f1f1;
+    border-radius: 10px;
+    width: 300px;
+    max-width: 30%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: white;
+    padding: 30px;
+}
+
+.popup-heading, .popup-info {
+    color: #282A3A;
+    margin: 0;
+    padding: 10px 0 0 0;
+}
+
+.popup .reset {
+    width: 80%;
+    margin: 20px 0 0 0;
+    padding: 10px;
+    font-size: 24px;
+    color: white;
+    box-shadow: 0 12px 16px 0 rgba(8, 250, 0, 0.24), 0 17px 50px 0 rgba(8, 250, 0, 0.19);
+}
+
+.popup img {
+    background-color: #474E68;
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
 }
