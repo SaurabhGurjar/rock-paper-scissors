@@ -11,6 +11,7 @@ body {
 
 .container {
     display: flex;
+    flex: 1;
     flex-direction: column;
 }
 
@@ -26,6 +27,7 @@ h1 {
 .heading {
     background: #000000;
     display: flex;
+    flex: 1;
     justify-content: center;
     align-items: center;
     height: 100px;
@@ -46,6 +48,7 @@ h1 {
 
 .result-text-wrapper {
     display: flex;
+    flex: 1;
     flex-direction: column;
     align-items: center;
     padding: 0 0 20px 0;
@@ -55,6 +58,7 @@ h1 {
 
 .display-choice {
     display: flex;
+    flex: 1;
     gap: 100px;
     margin: 10px 0 20px 0;
     align-items: center;
@@ -65,6 +69,7 @@ h1 {
 
 .choosed {
     display: flex;
+    flex: 1;
     width: 200px;
     height: auto;
     background: #474E68;
@@ -75,6 +80,7 @@ h1 {
 
 .selected {
     display: flex;
+    flex: 1;
     flex-direction: column;
     align-items: center;
 
@@ -82,6 +88,7 @@ h1 {
 
 .wins {
     display: flex;
+    flex: 1;
     gap: 10px;
     padding: 10px 0 0 0;
 
@@ -117,6 +124,7 @@ h1 {
 
 .display-score {
     display: flex;
+    flex: 1;
     flex-direction: column;
     align-items: center;
     gap: 10px;
@@ -136,6 +144,7 @@ h1 {
 
 .choice-container {
     display: flex;
+    flex: 1;
 }
 
 .wrapper {
@@ -189,6 +198,7 @@ h4 {
 
 .score-container {
     display: flex;
+    flex: 1;
     padding: 0;
     margin: 0;
     background: white;
@@ -234,11 +244,13 @@ h4 {
 
 .footer-text {
     padding: 10px 0 0 0;
+    flex: 1;
 }
 
 /* popup */
 .popup {
     display: flex;
+    flex: 1;
     flex-direction: column;
     position: fixed;    
     border-radius: 10px;
