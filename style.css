@@ -240,18 +240,23 @@ h4 {
 .popup {
     display: flex;
     flex-direction: column;
-    position: fixed;
+    position: fixed;    
     border-radius: 10px;
     width: 400px;
     max-width: 50%;
     top: 50%;
     left: 50%;
     z-index: 10;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) scale(0);
+    transition: 300ms ease-in-out;
     align-items: center;
     justify-content: space-evenly;
     background-color: white;
     padding: 30px 10px 30px 10px;
+}
+
+.popup.active {
+    transform: translate(-50%, -50%) scale(1);
 }
 
 .popup-heading, .popup-info {
@@ -275,4 +280,20 @@ h4 {
     height: 30px;
     border-radius: 10px;
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+#overlay {
+    position: fixed;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    pointer-events: none;
+}
+
+#overlay.active {
+    pointer-events: all;
+    opacity: 1;
 }

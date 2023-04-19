@@ -1,5 +1,5 @@
 const max = 10;
-let roundCounter = 0;
+let roundCounter = 1;
 let playerWinCounter = null;
 let playerScoreCounter = 0;
 let computerScoreCounter = 0;
@@ -26,6 +26,8 @@ const playerChoiceContainer = document.querySelector('.left');
 const computerChoiceContainer = document.querySelector('.right');
 const winnerImg = document.querySelector('.popup-img');
 const resetButton = document.querySelector('.reset');
+const popup = document.getElementById('popup');
+const overlay = document.getElementById('overlay');
 
 // Computer choice 
 function getComputerChoice() {
@@ -67,7 +69,7 @@ function playRound(playerSelection, computerSelection) {
 }
 
 // Game function call playRound function 5 times to play 5 round
-function game(playerSelection, counter) {
+function game(playerSelection) {
 
 
     const computerSelection = getComputerChoice();
@@ -86,6 +88,7 @@ function game(playerSelection, counter) {
 function updateScore() {
     playerScore.textContent = playerScoreCounter;
     computerScore.textContent = computerScoreCounter;
+    roundNumber.textContent = `Round ${roundCounter}`;
 }
 
 function getGameWinner () {
@@ -98,16 +101,17 @@ function getGameWinner () {
         playerChoiceContainer.classList.remove('active-lose');
         computerChoiceContainer.classList.remove('active-win');
         playerChoiceContainer.classList.remove('active-win');
-        roundCounter++;
-        if (roundCounter === 1) {
+        roundCounter = roundCounter + 1;
+        // console.log({roundCounter});
+        if (roundCounter === 2) {
             playerRoundOne.classList.add('rounds-win');
             computerRoundOne.classList.add('rounds-lose');
             winner++;
-        } else if (roundCounter === 2) {
+        } else if (roundCounter === 3) {
             playerRoundTwo.classList.add('rounds-win');
             computerRoundTwo.classList.add('rounds-lose');
             winner++;
-        } else if (roundCounter === 3) {
+        } else if (roundCounter === 4) {
             playerRoundThree.classList.add('rounds-win');
             computerRoundThree.classList.add('rounds-lose');
             winner++;
@@ -121,39 +125,36 @@ function getGameWinner () {
         playerChoiceContainer.classList.remove('active-lose');
         computerChoiceContainer.classList.remove('active-win');
         playerChoiceContainer.classList.remove('active-win');
-        roundCounter++;
+        roundCounter = roundCounter + 1;
+        // console.log({roundCounter});
 
-        if (roundCounter === 1) {
+        if (roundCounter === 2) {
             playerRoundOne.classList.add('rounds-lose');
             computerRoundOne.classList.add('rounds-win');
             winner--;
-        } else if (roundCounter === 2) {
+        } else if (roundCounter === 3) {
             playerRoundTwo.classList.add('rounds-lose');
             computerRoundTwo.classList.add('rounds-win');
             winner--;
-        } else if (roundCounter === 3) {
+        } else if (roundCounter === 4) {
             playerRoundThree.classList.add('rounds-lose');
             computerRoundThree.classList.add('rounds-win');
             winner--;
         
         }
     }
-    else if ((playerScoreCounter === computerScoreCounter) && (playerScoreCounter === 5 || computerScoreCounter === 5)) {
-        displayWinner.textContent = "Its a tie!";
-
-    }
+    
+    // console.log({winner});
 }
 
 function gameOver () {
-    if (roundCounter < 3) {
-        roundNumber.textContent = `Round ${roundCounter + 1}`;
-    } else {
-        roundNumber.textContent = `Round ${roundCounter}`;
+    if (roundCounter > 3) {
         displayPopup();
-    }
+    } 
 }
 
 function displayPopup () {
+    const playAgain = document.querySelector('.reset');
 
     if (winner > 0) {
         winnerImg.src = 'media/Human.png';
@@ -161,8 +162,10 @@ function displayPopup () {
         winnerImg.src = 'media/Ai.png';
     }
 
-    document.getElementById('popup').style.display = 'flex';
-    reset ();
+    popup.classList.add('active');
+    overlay.classList.add('active');
+
+    playAgain.addEventListener('click', reset);
 }
 
 function getPlayerChoice() {
@@ -207,9 +210,10 @@ function displayChoice(playerChoice, computerChoice) {
 }
 
 function reset() {
-    roundCounter = 0;
+    roundCounter = 1;
     playerScoreCounter = 0;
     computerScoreCounter = 0;
+    winner = 0;
     playerRoundOne.classList.remove('rounds-win');
     playerRoundOne.classList.remove('rounds-lose');
     computerRoundOne.classList.remove('rounds-win');
@@ -226,6 +230,10 @@ function reset() {
     playerChoiceContainer.classList.remove('active-lose');
     computerChoiceContainer.classList.remove('active-win');
     computerChoiceContainer.classList.remove('active-lose');
+    popup.classList.remove('active');
+    overlay.classList.remove('active');
+    updateScore();
 }
 
+// Main function
 getPlayerChoice();
