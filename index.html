@@ -12,93 +12,104 @@
 
 <body>
 
-    <div class="header">
-        <div class="heading">
-            <h1>Rock Paper Scissors</h1>
-        </div>
-    </div>
-
-    <div class="main">
-        <div class="result">
-            <div class="result-text-wrapper">
-                <h2 class="result-text">Start!!!</h2>
-                <p class="winner">Result will display here!</p>
+    <div class="container">
+        <div class="header">
+            <div class="heading">
+                <h1>Rock Paper Scissors</h1>
             </div>
+        </div>
 
-            <div class="display-choice">
-                <div class="selected">
-                    <div class="left choosed">
-                        <img src="media/Human.png" id="left-img" class="selected">
-                    </div>
-                    <div class="wins">
-                        <div class="pr-1"></div>
-                        <div class="pr-2"></div>
-                        <div class="pr-3"></div>
-                    </div>
+        <div class="main">
+            <div class="result">
+                <div class="result-text-wrapper">
+                    <h2 class="result-text">Start!!!</h2>
+                    <p class="winner">Result will display here!</p>
                 </div>
 
-                <div class="game-numbers">
-                    <div class="round-number">
-                        <h3 class="round"></h3>
-                    </div>
-
-                    <div class="score-wrapper">
-                        <div class="display-score">
-                            <h3>You</h3>
-                            <div class="score-container">
-                                <p class="player-score score">0</p>
-                            </div>
+                <div class="display-choice">
+                    <div class="selected">
+                        <div class="left choosed">
+                            <img src="media/Human.png" id="left-img" class="selected">
                         </div>
-
-                        <div class="display-score">
-                            <h3>AI</h3>
-                            <div class="score-container">
-                                <p class="computer-score score">0</p>
-                            </div>
+                        <div class="wins">
+                            <div class="pr-1"></div>
+                            <div class="pr-2"></div>
+                            <div class="pr-3"></div>
                         </div>
                     </div>
+
+                    <div class="game-numbers">
+                        <div class="round-number">
+                            <h3 class="round"></h3>
+                        </div>
+
+                        <div class="score-wrapper">
+                            <div class="display-score">
+                                <h3>You</h3>
+                                <div class="score-container">
+                                    <p class="player-score score">0</p>
+                                </div>
+                            </div>
+
+                            <div class="display-score">
+                                <h3>AI</h3>
+                                <div class="score-container">
+                                    <p class="computer-score score">0</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="selected">
+                        <div class="right choosed">
+                            <img src="media/Ai.png" id="right-img" class="selected">
+                        </div>
+                        <div class="computer-wins wins">
+                            <div class="cr-1"></div>
+                            <div class="cr-2"></div>
+                            <div class="cr-3"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="choice">
+                <div class="choice-text">
+                    <h2>Choose your weapon!</h2>
+                </div>
+                <div class="choice-container">
+                    <div class="wrapper">
+                        <button id="rock">
+                            <img src="./media/ROCK.png" alt="rock">
+                        </button>
+                        <h4>ROCK</h4>
+                    </div>
+                    <div class="wrapper">
+                        <button id="paper">
+                            <img src="./media/PAPER.png" alt="paper">
+                        </button>
+                        <h4>PAPER</h4>
+                    </div>
+                    <div class="wrapper">
+                        <button id="scissors">
+                            <img src="./media/SCISSORS.png" alt="scissors">
+                        </button>
+                        <h4>SCISSORS</h4>
+                    </div>
                 </div>
 
-                <div class="selected">
-                    <div class="right choosed">
-                        <img src="media/Ai.png" id="right-img" class="selected">
-                    </div>
-                    <div class="computer-wins wins">
-                        <div class="cr-1"></div>
-                        <div class="cr-2"></div>
-                        <div class="cr-3"></div>
-                    </div>
-                </div>
             </div>
         </div>
 
-        <div class="choice">
-            <div class="choice-text">
-                <h2>Choose your weapon!</h2>
-            </div>
-            <div class="choice-container">
-                <div class="wrapper">
-                    <button id="rock">
-                        <img src="./media/ROCK.png" alt="rock">
-                    </button>
-                    <h4>ROCK</h4>
-                </div>
-                <div class="wrapper">
-                    <button id="paper">
-                        <img src="./media/PAPER.png" alt="paper">
-                    </button>
-                    <h4>PAPER</h4>
-                </div>
-                <div class="wrapper">
-                    <button id="scissors">
-                        <img src="./media/SCISSORS.png" alt="scissors">
-                    </button>
-                    <h4>SCISSORS</h4>
-                </div>
-            </div>
-    
+
+
+        <div class="footer">
+            <div class="divider"></div>
+            <p class="footer-text">Created by Saurabh Choudhary</p>
         </div>
+
     </div>
+
 
     <!-- Popup -->
     <div class="popup" id="popup">
@@ -106,11 +117,6 @@
         <h1 class="popup-heading">Winner</h1>
         <p class="popup-info"></p>
         <button class="reset">Play Again</button>
-    </div>
-
-    <div class="footer">
-        <div class="divider"></div>
-        <p class="footer-text">Created by Saurabh Choudhary</p>
     </div>
 
     <div id="overlay"></div>
