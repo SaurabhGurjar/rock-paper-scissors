@@ -11,7 +11,7 @@ body {
 
 .container {
     display: flex;
-    flex: 1;
+    flex: 1 1 auto;
     flex-direction: column;
     justify-content: space-between;
 }
@@ -28,7 +28,7 @@ h1 {
 .heading {
     background: #000000;
     display: flex;
-    flex: 1;
+    flex: 1 1 auto;
     justify-content: center;
     align-items: center;
     height: 100px;
@@ -70,8 +70,8 @@ h1 {
 
 .choosed {
     display: flex;
-    flex: 1;
-    width: 200px;
+    flex: 1 1 auto;
+    max-width: 200px;
     height: auto;
     background: #474E68;
     border-radius: 12px;
