@@ -239,6 +239,9 @@ function reset() {
     computerChoiceContainer.classList.remove('active-lose');
     popup.classList.remove('active');
     overlay.classList.remove('active');
+    imgLeft.src = `media/Human.png`
+    imgRight.src = `media/Ai.png`
+    
     updateScore();
 }
 
