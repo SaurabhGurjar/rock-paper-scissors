@@ -8,38 +8,48 @@ let winner = 0;
 // When user enter the choice
 const rock = document.querySelector('#rock');
 const paper = document.querySelector('#paper');
+const scissors = document.querySelector('#scissors');
+
+// Result text
+const resultText = document.querySelector('.result-text');
 const displayWinner = document.querySelector('.winner');
+
+// Choices container
+const playerChoiceContainer = document.querySelector('.left');
+const computerChoiceContainer = document.querySelector('.right');
+
+// Choosed 
 const imgLeft = document.querySelector('#left-img');
 const imgRight = document.querySelector('#right-img');
-const scissors = document.querySelector('#scissors');
-const resultText = document.querySelector('.result-text');
-const playerScore = document.querySelector('.player-score');
+
+// Round 
 const roundNumber = document.querySelector('.round')
+
+// Score
+const playerScore = document.querySelector('.player-score');
 const computerScore = document.querySelector('.computer-score');
+
+// Round indicators
 const playerRoundOne = document.querySelector('.pr-1');
 const playerRoundTwo = document.querySelector('.pr-2');
 const playerRoundThree = document.querySelector('.pr-3');
 const computerRoundOne = document.querySelector('.cr-1');
 const computerRoundTwo = document.querySelector('.cr-2');
 const computerRoundThree = document.querySelector('.cr-3');
-const playerChoiceContainer = document.querySelector('.left');
-const computerChoiceContainer = document.querySelector('.right');
+
+
+// Popup 
 const winnerImg = document.querySelector('.popup-img');
 const resetButton = document.querySelector('.reset');
 const popup = document.getElementById('popup');
 const overlay = document.getElementById('overlay');
 const popupWinnerText = document.querySelector('.popup-info');
 
-// Computer choice 
+// Get Computer choice 
 function getComputerChoice() {
-    const num = Math.floor(Math.random() * 10);
-    if (num < (Math.floor(max / 3))) {
-        return "ROCK";
-    } else if (num > (Math.floor(max / 3)) && num < (Math.floor(max / 3) + Math.floor(max / 3))) {
-        return "PAPER";
-    } else {
-        return "SCISSORS";
-    }
+    const choice = ['ROCK', 'PAPER', 'SCISSORS'];
+    const getRandomIndex = Math.floor(Math.random() * choice.length);
+    return choice[getRandomIndex];
 }
 
 // Check who wins 
@@ -241,7 +251,9 @@ function reset() {
     overlay.classList.remove('active');
     imgLeft.src = `media/Human.png`
     imgRight.src = `media/Ai.png`
-    
+    resultText.textContent = 'Are you ready!';
+    displayWinner.textContent = 'Lets Play Again';
+
     updateScore();
 }
 
