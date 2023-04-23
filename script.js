@@ -64,6 +64,10 @@ function playRound(playerSelection, computerSelection) {
     } else {
         resultText.textContent = "No one Win";
         displayWinner.textContent = "Its a Tie!";
+        playerChoiceContainer.classList.remove('active-lose');
+        playerChoiceContainer.classList.remove('active-win');
+        computerChoiceContainer.classList.remove('active-lose');
+        computerChoiceContainer.classList.remove('active-win');
         return;
     }
 
